@@ -35,9 +35,9 @@ except ImportError:
 
 # ── 경로 설정: model/bottomup 직접 탐색 ──────────────────────────────────────
 def _add_model_path():
-    here = Path(__file__).resolve().parent          # model/topdown/
-    root = here.parent.parent                       # cnu_model/
-    for p in [str(root), str(root / 'model' / 'bottomup')]:
+    here = Path(__file__).resolve().parent          # pipeline/topdown/
+    root = here.parent                              # pipeline/
+    for p in [str(root), str(root / 'bottomup')]:
         if p not in sys.path:
             sys.path.insert(0, p)
 _add_model_path()

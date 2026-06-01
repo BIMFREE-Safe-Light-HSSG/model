@@ -161,13 +161,13 @@ def encode_3d_one(pts: np.ndarray, openshape_key: str,
 # 메인
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
-    _ROOT = Path(__file__).resolve().parents[2]
+    _ROOT = Path(__file__).resolve().parents[1]
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--floor_npz',
                         default=str(_ROOT / 'src' / 'floor.npz'))
     parser.add_argument('--l1_npz',
-                        default=str(_ROOT / 'model' / 'merge' / 'stage2_results' / 'l1_floor.npz'))
+                        default=str(_ROOT / 'merge' / 'stage2_results' / 'l1_floor.npz'))
     parser.add_argument('--out_dir',
                         default=str(_THIS_DIR / 'stage3_results'))
     parser.add_argument('--openshape', default='vitb32')

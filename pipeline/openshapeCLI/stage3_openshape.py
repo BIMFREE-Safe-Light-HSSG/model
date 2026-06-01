@@ -494,11 +494,11 @@ def infer_stage3(model: SemanticEncoder,
 # ── 메인 ─────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
     # ── 기본 경로: 이 파일 기준 cnu_model/ 루트 ───────────────────
-    _ROOT = Path(__file__).resolve().parents[2]   # …/cnu_model
+    _ROOT = Path(__file__).resolve().parents[1]   # …/pipeline
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--floor_npz',  default=str(_ROOT / 'src' / 'floor.npz'))
-    parser.add_argument('--l1_npz',     default=str(_ROOT / "model"/"merge"/'stage2_results' / 'l1_floor.npz'))
+    parser.add_argument('--l1_npz',     default=str(_ROOT / 'merge' / 'stage2_results' / 'l1_floor.npz'))
     parser.add_argument('--out_dir',    default=str(Path(__file__).resolve().parent / 'stage3_results'))
     parser.add_argument('--openshape',  default='vitb32',
                         help="'vitb32'(기본) | 'vitl14' | 'vitg14' | '/path/model.pt'")

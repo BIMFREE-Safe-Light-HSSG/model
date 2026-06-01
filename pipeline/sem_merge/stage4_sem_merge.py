@@ -669,7 +669,7 @@ if __name__ == '__main__':
     _MERGE       = Path(__file__).resolve().parent                         # …/model/sem_merge
 
     # ── 자동 감지: stage2_results에서 l1_*.npz, 프로젝트 루트에서 room_grid_*.npz ──
-    _STAGE2_DIR  = _ROOT / 'model' / 'merge' / 'stage2_results'
+    _STAGE2_DIR  = _ROOT / 'merge' / 'stage2_results'
     _l1_cands    = sorted(_STAGE2_DIR.glob('l1_*.npz')) if _STAGE2_DIR.exists() else []
     _default_l1  = str(max(_l1_cands, key=lambda p: p.stat().st_mtime)) \
                    if _l1_cands else str(_STAGE2_DIR / 'l1_floor.npz')
