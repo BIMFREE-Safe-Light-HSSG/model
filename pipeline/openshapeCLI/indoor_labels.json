@@ -1,0 +1,23 @@
+[
+  "table","wood table", "wood desk","desk","stair", "dining table", "coffee table", "side table", "conference table",
+  "chair", "office chair", "armchair", "stool", "bench", "sofa", "couch",
+  "cabinet", "bookcase", "bookshelf", "shelf", "shelving unit", "drawer", "dresser",
+  "wardrobe", "closet", "locker", "storage unit", "filing cabinet",
+  "door", "window", "glass door", "sliding door", "double door",
+  "stairs", "staircase", "railing", "handrail", "elevator",
+  "column", "pillar", "beam", "wall", "partition", "divider",
+  "monitor", "computer", "laptop", "keyboard", "mouse", "printer", "projector",
+  "phone", "telephone", "speaker", "microphone", "tv", "television", "screen",
+  "whiteboard", "blackboard", "board", "bulletin board", "sign", "poster",
+  "lamp", "light fixture", "ceiling light", "floor lamp", "desk lamp",
+  "air conditioner", "fan", "vent", "heater",
+  "sink", "toilet", "urinal", "faucet", "mirror", "counter", "shower",
+  "trash can", "bin", "recycling bin",
+  "box", "cardboard box", "container", "rack", "cart", "trolley", "pallet",
+  "plant", "potted plant", "flower pot", "vase",
+  "fire extinguisher", "fire hydrant", "emergency exit",
+  "clock", "picture frame", "painting", "sculpture",
+  "pipe", "duct", "cable tray",
+  "water dispenser", "vending machine", "refrigerator", "microwave",
+  "reception desk", "podium", "lectern"
+]
