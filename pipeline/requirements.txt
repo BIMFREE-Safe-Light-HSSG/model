@@ -1,0 +1,27 @@
+# SuperHSSG Pipeline 의존성
+# Python 3.10 ~ 3.12 권장
+
+# 수치 연산
+numpy
+scipy
+scikit-learn
+scikit-image
+
+# 이미지 처리
+opencv-python
+Pillow
+matplotlib
+
+# 딥러닝 (CUDA 버전은 아래 PyTorch 설치 가이드 참고)
+torch
+torchvision
+
+# SAM (Segment Anything Model)
+segment-anything
+
+# OpenShape / CLIP (Stage 2)
+open-clip-torch
+huggingface-hub
+
+# 시각화 (선택, 없어도 파이프라인 실행 가능)
+open3d
