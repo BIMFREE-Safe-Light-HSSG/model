@@ -5,5 +5,19 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
-
 AGENTS.md
+
+# pipeline: 입력 데이터
+pipeline/src/
+
+# pipeline: SAM 체크포인트 (2.5GB)
+pipeline/*.pth
+
+# pipeline: 실행 중간 산출물
+pipeline/room_grid_*.npz
+pipeline/results/
+pipeline/merge/stage2_results/
+pipeline/openshapeCLI/stage3_results/
+pipeline/sem_merge/stage4_results/
+pipeline/bottomup/stage5_results/
+pipeline/topdown/stage6_results/
