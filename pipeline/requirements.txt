@@ -26,6 +26,8 @@ segment-anything
 # OpenShape / CLIP (Stage 2)
 open-clip-torch
 huggingface-hub
+torch-redstone
+einops
 
 # 시각화 (선택, 없어도 파이프라인 실행 가능)
 open3d

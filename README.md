@@ -76,6 +76,51 @@ python run_pipeline.py --src src/6_floor.npz
 > - 중간 산출물 디렉토리: 각 스테이지가 자동 생성
 > - Stage 3~5 체크포인트: 없으면 자동 학습 후 저장, 있으면 바로 추론
 
+### 6. 결과 시각화
+
+파이프라인 실행 후 생성된 `results/*.json`을 Open3D로 3D 시각화합니다.
+
+```bash
+cd pipeline/
+
+# 기본 실행 (JSON 경로 직접 지정)
+python visualize_hssg.py --json results/6_scene_graph.json
+
+# results/ 폴더의 JSON 목록에서 선택
+python visualize_hssg.py --src
+```
+
+**주요 옵션:**
+
+| 옵션 | 설명 |
+|------|------|
+| `--json <path>` | 시각화할 scene_graph.json 경로 |
+| `--src` | results/ 폴더의 JSON 목록에서 선택 |
+| `--color_by zone` | 같은 방(Zone) 소속 객체를 동일 색으로 표시 |
+| `--color_by floor` | 층별 색상으로 표시 |
+| `--no_hierarchy` | Zone→Asset 계층 연결선 숨김 |
+| `--no_zones` | 방 반투명 면 숨김 |
+| `--no_assets` | asset 구체 숨김 |
+| `--no_edges` | 관계선 숨김 |
+| `--class chair` | 특정 클래스만 표시 |
+| `--floor_links` | 층 간 연결선 표시 |
+| `--zone_links` | 방 간 연결선 표시 |
+
+**사용 예시:**
+
+```bash
+# Zone별 색상으로 계층 구조 확인
+python visualize_hssg.py --json results/6_scene_graph.json --color_by zone
+
+# 의자만 표시
+python visualize_hssg.py --json results/6_scene_graph.json --class chair
+
+# 관계선·계층선 없이 깔끔하게
+python visualize_hssg.py --json results/6_scene_graph.json --no_edges --no_hierarchy
+```
+
+> Open3D가 설치되어 있어야 합니다: `pip install open3d`
+
 ---
 
 백엔드가 `/transform`으로 변환 작업을 submit하면 모델 서버는 즉시 `202 Accepted`를 반환하고, background task에서 SuperHSSG 파이프라인을 실행한 뒤 백엔드 callback API로 상태를 전달합니다.
