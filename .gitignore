@@ -7,6 +7,9 @@ __pycache__/
 
 AGENTS.md
 
+# pipeline: 자동 clone되는 외부 레포
+pipeline/OpenShape_code/
+
 # pipeline: 입력 데이터
 pipeline/src/
 

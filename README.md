@@ -2,6 +2,82 @@
 
 SuperSafeTwin 백엔드와 연동되는 FastAPI 기반 모델 서버입니다.
 
+---
+
+## 빠른 시작 (파이프라인 단독 실행)
+
+### 1. 클론
+
+```bash
+git clone https://github.com/BIMFREE-Safe-Light-HSSG/model.git
+cd model
+```
+
+### 2. Python 패키지 설치
+
+PyTorch는 CUDA 버전에 맞게 먼저 설치합니다.
+
+```bash
+# CUDA 12.1 (RTX 30xx/40xx)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+# CUDA 11.8
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# CPU only
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+```
+
+나머지 패키지:
+
+```bash
+pip install -r pipeline/requirements.txt
+```
+
+### 3. SAM 체크포인트 다운로드 (2.5 GB, 1회만)
+
+```bash
+# macOS
+curl -L -o pipeline/sam_vit_h_4b8939.pth \
+  https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+
+# Linux
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth -P pipeline/
+```
+
+### 4. 샘플 입력 파일 다운로드
+
+| 파일 | 링크 |
+|------|------|
+| `6_floor.npz` | [Google Drive](https://drive.google.com/file/d/1JPGTxzs2gOvZeZf3dUqG28zyIxZdRu3r/view?usp=sharing) |
+| `5_floor.npz` | [Google Drive](https://drive.google.com/file/d/1tB0PbRT_Zm3DzXQAOzAqNEVzSOIW6s99/view?usp=sharing) |
+
+다운로드한 파일을 `pipeline/src/`에 저장합니다.
+
+```bash
+mkdir -p pipeline/src
+# 다운로드한 파일을 pipeline/src/ 로 이동
+mv 6_floor.npz pipeline/src/
+mv 5_floor.npz pipeline/src/
+```
+
+### 5. 파이프라인 실행
+
+```bash
+cd pipeline/
+python run_pipeline.py --src src/6_floor.npz
+```
+
+실행이 완료되면 결과물이 `pipeline/results/6_scene_graph.json`에 생성됩니다.
+
+> **자동 처리 항목**
+> - OpenShape_code 레포: 첫 실행 시 자동 `git clone` → `pipeline/OpenShape_code/`
+> - OpenShape 모델(vitb32): 첫 실행 시 HuggingFace에서 자동 다운로드
+> - 중간 산출물 디렉토리: 각 스테이지가 자동 생성
+> - Stage 3~5 체크포인트: 없으면 자동 학습 후 저장, 있으면 바로 추론
+
+---
+
 백엔드가 `/transform`으로 변환 작업을 submit하면 모델 서버는 즉시 `202 Accepted`를 반환하고, background task에서 SuperHSSG 파이프라인을 실행한 뒤 백엔드 callback API로 상태를 전달합니다.
 
 ## Tech Stack

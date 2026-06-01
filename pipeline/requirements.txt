@@ -17,6 +17,10 @@ torch
 torchvision
 
 # SAM (Segment Anything Model)
+# 체크포인트 다운로드 (macOS):
+#   curl -L -o pipeline/sam_vit_h_4b8939.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+# 체크포인트 다운로드 (Linux):
+#   wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth -P pipeline/
 segment-anything
 
 # OpenShape / CLIP (Stage 2)

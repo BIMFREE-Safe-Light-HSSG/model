@@ -34,9 +34,22 @@ import torch.nn.functional as F
 from pathlib import Path
 import argparse
 
-# ── OpenShape_code/src 자동 경로 등록 ────────────────────────────────────────
-_THIS_DIR    = Path(__file__).resolve().parent
-_OPENSHAPE_SRC = _THIS_DIR.parents[1] / 'OpenShape_code' / 'src'
+# ── OpenShape_code/src 자동 경로 등록 (없으면 자동 clone) ────────────────────
+_THIS_DIR      = Path(__file__).resolve().parent
+_OPENSHAPE_DIR = _THIS_DIR.parents[1] / 'OpenShape_code'
+_OPENSHAPE_SRC = _OPENSHAPE_DIR / 'src'
+
+if not _OPENSHAPE_SRC.exists():
+    import subprocess as _sp
+    print("[OpenShape] OpenShape_code 레포 자동 clone 중...")
+    _sp.run(
+        ['git', 'clone', '--depth', '1',
+         'https://github.com/Colin97/OpenShape_code',
+         str(_OPENSHAPE_DIR)],
+        check=True
+    )
+    print(f"[OpenShape] clone 완료: {_OPENSHAPE_DIR}")
+
 if _OPENSHAPE_SRC.exists() and str(_OPENSHAPE_SRC) not in sys.path:
     sys.path.insert(0, str(_OPENSHAPE_SRC))
 
